@@ -1,5 +1,9 @@
 <header>
-  <h1>SAMSE PHOTOGRAPHE</h1>
+  <div class="logo-container">
+    <img src="assets/logo.png" alt="Logo Samsei Photography" class="logo">
+    <h1>SAMSEI PHOTOGRAPHE</h1>
+  </div>
+
   <nav>
     <a routerLink="/">Galerie</a>
     <a routerLink="/about">À propos</a>
@@ -7,7 +11,22 @@
   </nav>
 </header>
 
-<router-outlet></router-outlet>
+
+
+<!-- Zone qui change selon la page -->
+<main [@routeAnimation]="prepareRoute(outlet)">
+  <router-outlet #outlet="outlet"></router-outlet>
+</main>
+
+
+
+
+
+
+
+
+
+
 
 <footer>
   <p>© 2026 Portfolio Photographe</p>

@@ -6,11 +6,15 @@ header {
   font-family: 'Helvetica', sans-serif;
   border-bottom: 1px solid #eee;
 
-  h1 {
-    letter-spacing: 5px;
-    font-size: 1.5rem;
-    text-transform: uppercase;
-  }
+ header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  margin-left: 10px;
+  color: #222;
+  text-transform: uppercase;
+}
+
 
   nav a {
     margin-left: 20px;
@@ -59,3 +63,16 @@ header {
     .overlay { opacity: 1; } // Affiche le texte au survol
   }
 }
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 70px;   // augmente la taille
+  height: auto;
+  margin-right: 15px;
+}
+

@@ -1,13 +1,34 @@
 import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink], // Ajoute RouterLink ici pour le menu !
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
+
+  animations: [
+    trigger('routeAnimation', [
+      transition('* <=> *', [
+        style({
+          opacity: 0,
+          transform: 'scale(0.95)'
+        }),
+        animate(
+          '300ms ease-out',
+          style({
+            opacity: 1,
+            transform: 'scale(1)'
+          })
+        )
+      ])
+    ])
+  ]
 })
 export class AppComponent {
-  title = 'portfolio-photo';
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet?.activatedRouteData;
+  }
 }
