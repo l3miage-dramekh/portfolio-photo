@@ -1,0 +1,83 @@
+/* --- HERO SECTION --- */
+.hero {
+  position: relative;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 0 10%;
+  overflow: hidden;
+}
+
+/* IMAGE DE FOND */
+.hero-image {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=1920');
+ /* Mets ta photo ici */
+  background-size: cover;
+  background-position: center;
+  filter: brightness(60%);
+  z-index: -1;
+}
+
+/* TEXTE */
+.hero-content {
+  max-width: 600px;
+  color: white;
+  animation: fadeIn 1s ease forwards;
+}
+
+.hero-content h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.2rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  margin-bottom: 30px;
+  color: #f0f0f0;
+}
+
+/* BOUTON */
+.cta {
+  display: inline-block;
+  padding: 12px 28px;
+  background: white;
+  color: black;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s ease;
+
+  &:hover {
+    background: #ddd;
+  }
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero {
+    height: 80vh;
+    padding: 0 5%;
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+}

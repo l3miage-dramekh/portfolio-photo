@@ -1,9 +1,37 @@
-<p>gallery works!</p>
+<!-- FILTRES PRINCIPAUX -->
+<div class="filter-bar">
+  <button [class.active]="selectedCategory === 'all'" (click)="setCategory('all')">Tout</button>
+  <button [class.active]="selectedCategory === 'portrait'" (click)="setCategory('portrait')">Portraits</button>
+  <button [class.active]="selectedCategory === 'nature'" (click)="setCategory('nature')">Nature</button>
+  <button [class.active]="selectedCategory === 'urbain'" (click)="setCategory('urbain')">Urbain</button>
+  <button [class.active]="selectedCategory === 'evenement'" (click)="setCategory('evenement')">Événements</button>
+</div>
+
+<!-- SOUS-FILTRES -->
+<div class="filter-bar sub" *ngIf="selectedCategory === 'evenement'">
+  <button [class.active]="selectedSub === 'all'" (click)="setSub('all')">Tous</button>
+  <button [class.active]="selectedSub === 'mariage'" (click)="setSub('mariage')">Mariage</button>
+  <button [class.active]="selectedSub === 'bapteme'" (click)="setSub('bapteme')">Baptême</button>
+  <button [class.active]="selectedSub === 'anniversaire'" (click)="setSub('anniversaire')">Anniversaire</button>
+</div>
+
+<!-- GALERIE -->
 <div class="gallery-grid">
-  @for (project of projects; track project.title) {
-    <div class="photo-card">
-      <img [src]="project.url" [alt]="project.title">
+  @for (project of filteredProjects; track project.title) {
+    <div class="photo-card" (click)="openImage(project.url)">
+      <img [src]="project.url" [alt]="project.title" loading="lazy">
       <div class="overlay"><span>{{ project.title }}</span></div>
     </div>
   }
 </div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" *ngIf="selectedImage" (click)="closeImage()">
+  <img [src]="selectedImage">
+</div>
+
+<section class="next-section">
+  <h3>Et si je vous parlais de moi ?</h3>
+  <a routerLink="/about" class="next-btn">Découvrir l’histoire</a>
+</section>
+

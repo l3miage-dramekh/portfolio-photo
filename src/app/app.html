@@ -1,32 +1,37 @@
 <header>
   <div class="logo-container">
     <img src="assets/logo.png" alt="Logo Samsei Photography" class="logo">
-    <h1>SAMSEI PHOTOGRAPHE</h1>
+    <h1>SAMSEI PHOTOGRAPHY</h1>
   </div>
 
-  <nav>
-    <a routerLink="/">Galerie</a>
+  <!-- MENU DESKTOP -->
+  <nav class="nav-desktop">
+    <a routerLink="/">Accueil</a>
+    <a routerLink="/gallery">Galerie</a>
     <a routerLink="/about">À propos</a>
     <a routerLink="/contact">Contact</a>
+  </nav>
+
+  <!-- BOUTON HAMBURGER -->
+  <div class="hamburger" (click)="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- MENU MOBILE -->
+  <nav class="nav-mobile" [class.open]="menuOpen">
+    <a routerLink="/" (click)="toggleMenu()">Accueil</a>
+    <a routerLink="/gallery" (click)="toggleMenu()">Galerie</a>
+    <a routerLink="/about" (click)="toggleMenu()">À propos</a>
+    <a routerLink="/contact" (click)="toggleMenu()">Contact</a>
   </nav>
 </header>
 
 
-
-<!-- Zone qui change selon la page -->
 <main [@routeAnimation]="prepareRoute(outlet)">
   <router-outlet #outlet="outlet"></router-outlet>
 </main>
-
-
-
-
-
-
-
-
-
-
 
 <footer>
   <p>© 2026 Portfolio Photographe</p>

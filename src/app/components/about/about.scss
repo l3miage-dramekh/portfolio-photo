@@ -1,31 +1,37 @@
+/* --- SECTION À PROPOS --- */
 .about-container {
   display: flex;
   align-items: center;
   gap: 50px;
-  padding: 20px;
+  padding: 60px 10%;
+  max-width: 1200px;
+  margin: auto;
 }
 
-/* IMAGE PLUS GRANDE ET MISE EN VALEUR */
+/* IMAGE */
 .about-image img {
-  width: 450px; /* ← augmente la taille */
+  width: 420px;
   height: auto;
   border-radius: 12px;
   object-fit: cover;
   box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
-/* TEXTE PLUS ÉTROIT POUR LAISSER DE LA PLACE À L’IMAGE */
+/* TEXTE */
 .about {
   flex: 1;
-  max-width: 450px; /* ← réduit la largeur du texte */
-  line-height: 1.6;
+  max-width: 500px;
+  line-height: 1.8;
   font-size: 1.1rem;
+  color: #444;
 }
 
 .about h2 {
-  font-size: 2rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.6rem;
   margin-bottom: 20px;
-  text-align: center;
+  text-align: left;
+  font-weight: 600;
 }
 
 /* VERSION MOBILE */
@@ -33,6 +39,7 @@
   .about-container {
     flex-direction: column;
     text-align: center;
+    padding: 40px 5%;
   }
 
   .about-image img {
@@ -43,16 +50,22 @@
   .about {
     max-width: 100%;
   }
+
+  .about h2 {
+    text-align: center;
+  }
 }
 
-/* SERVICES (inchangé) */
+/* --- SERVICES --- */
 .services {
-  margin-top: 50px;
+  margin-top: 80px;
   text-align: center;
+  padding: 0 10%;
 }
 
 .services h2 {
-  font-size: 2rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
   margin-bottom: 30px;
   font-weight: 600;
 }
@@ -61,7 +74,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
-  padding: 0 20px;
 }
 
 .service-card {
@@ -81,18 +93,10 @@
   font-size: 1.4rem;
   margin-bottom: 10px;
   color: #6a4bc3;
+  font-family: 'Playfair Display', serif;
 }
 
 .service-card p {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #444;
-}
-
-.about-photo {
-  width: 280px;
-  height: auto;
-  border-radius: 12px;
-  object-fit: cover;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-  margin-bottom: 20px;
 }

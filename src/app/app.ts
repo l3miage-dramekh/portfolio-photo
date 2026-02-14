@@ -28,7 +28,26 @@ import { trigger, transition, style, animate } from '@angular/animations';
   ]
 })
 export class AppComponent {
+
+  ngOnInit() {
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 20) {
+        header?.classList.add('scrolled');
+      } else {
+        header?.classList.remove('scrolled');
+      }
+    });
+  }
+
   prepareRoute(outlet: RouterOutlet) {
     return outlet?.activatedRouteData;
   }
+
+  menuOpen = false;
+
+toggleMenu() {
+  this.menuOpen = !this.menuOpen;
+}
+
 }
