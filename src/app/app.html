@@ -1,19 +1,13 @@
 <header>
-  <h1>NOM DU PHOTOGRAPHE</h1>
+  <h1>SAMSE PHOTOGRAPHE</h1>
   <nav>
-    <a href="#">Galerie</a>
-    <a href="#">À propos</a>
-    <a href="#">Contact</a>
+    <a routerLink="/">Galerie</a>
+    <a routerLink="/about">À propos</a>
+    <a routerLink="/contact">Contact</a>
   </nav>
 </header>
 
-<main>
-  <div class="gallery-grid">
-    <div class="photo-card">Photo 1</div>
-    <div class="photo-card">Photo 2</div>
-    <div class="photo-card">Photo 3</div>
-  </div>
-</main>
+<router-outlet></router-outlet>
 
 <footer>
   <p>© 2026 Portfolio Photographe</p>
