@@ -1,0 +1,39 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 5%;
+  font-family: 'Helvetica', sans-serif;
+  border-bottom: 1px solid #eee;
+
+  h1 {
+    letter-spacing: 5px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 300;
+    &:hover { color: #888; }
+  }
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 15px;
+  padding: 2rem 5%;
+}
+
+.photo-card {
+  background: #f4f4f4;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ccc;
+  border-radius: 4px;
+}
