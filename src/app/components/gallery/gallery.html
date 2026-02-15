@@ -1,13 +1,57 @@
-<!-- FILTRES PRINCIPAUX -->
-<div class="filter-bar">
-  <button [class.active]="selectedCategory === 'all'" (click)="setCategory('all')">Tout</button>
-  <button [class.active]="selectedCategory === 'portrait'" (click)="setCategory('portrait')">Portraits</button>
-  <button [class.active]="selectedCategory === 'nature'" (click)="setCategory('nature')">Nature</button>
-  <button [class.active]="selectedCategory === 'urbain'" (click)="setCategory('urbain')">Urbain</button>
-  <button [class.active]="selectedCategory === 'evenement'" (click)="setCategory('evenement')">Événements</button>
+<!-- ========================= -->
+<!-- HERO SLIDER PREMIUM       -->
+<!-- ========================= -->
+
+<div class="hero-slider">
+  <div class="hero-track">
+
+    <!-- Liste originale -->
+    <div class="hero-item" *ngFor="let h of heroImages">
+      <img [src]="h.url" [alt]="h.title">
+      <div class="hero-caption">{{ h.title }}</div>
+    </div>
+
+    <!-- Duplication pour boucle infinie -->
+    <div class="hero-item" *ngFor="let h of heroImages">
+      <img [src]="h.url" [alt]="h.title">
+      <div class="hero-caption">{{ h.title }}</div>
+    </div>
+
+  </div>
 </div>
 
-<!-- SOUS-FILTRES -->
+
+<!-- ========================= -->
+<!-- FILTRES PRINCIPAUX        -->
+<!-- ========================= -->
+
+<div class="filter-bar">
+  <button [class.active]="selectedCategory === 'all'" (click)="setCategory('all')">
+    Portfolio complet
+  </button>
+
+  <button [class.active]="selectedCategory === 'portrait'" (click)="setCategory('portrait')">
+    Portraits
+  </button>
+
+  <button [class.active]="selectedCategory === 'nature'" (click)="setCategory('nature')">
+    Nature & paysages
+  </button>
+
+  <button [class.active]="selectedCategory === 'urbain'" (click)="setCategory('urbain')">
+    Photographie urbaine
+  </button>
+
+  <button [class.active]="selectedCategory === 'evenement'" (click)="setCategory('evenement')">
+    Événements & reportages
+  </button>
+</div>
+
+
+<!-- ========================= -->
+<!-- SOUS-FILTRES ÉVÉNEMENTS   -->
+<!-- ========================= -->
+
 <div class="filter-bar sub" *ngIf="selectedCategory === 'evenement'">
   <button [class.active]="selectedSub === 'all'" (click)="setSub('all')">Tous</button>
   <button [class.active]="selectedSub === 'mariage'" (click)="setSub('mariage')">Mariage</button>
@@ -15,8 +59,53 @@
   <button [class.active]="selectedSub === 'anniversaire'" (click)="setSub('anniversaire')">Anniversaire</button>
 </div>
 
-<!-- GALERIE -->
-<div class="gallery-grid">
+
+<!-- ========================= -->
+<!-- PORTFOLIO COMPLET ORGANISÉ -->
+<!-- ========================= -->
+
+<div *ngIf="selectedCategory === 'all'">
+
+  <h2 class="section-title">Portraits</h2>
+  <div class="gallery-grid">
+    <div class="photo-card" *ngFor="let p of portraits" (click)="openImage(p.url)">
+      <img [src]="p.url" [alt]="p.title">
+      <div class="overlay"><span>{{ p.title }}</span></div>
+    </div>
+  </div>
+
+  <h2 class="section-title">Nature & paysages</h2>
+  <div class="gallery-grid">
+    <div class="photo-card" *ngFor="let p of natures" (click)="openImage(p.url)">
+      <img [src]="p.url" [alt]="p.title">
+      <div class="overlay"><span>{{ p.title }}</span></div>
+    </div>
+  </div>
+
+  <h2 class="section-title">Photographie urbaine</h2>
+  <div class="gallery-grid">
+    <div class="photo-card" *ngFor="let p of urbains" (click)="openImage(p.url)">
+      <img [src]="p.url" [alt]="p.title">
+      <div class="overlay"><span>{{ p.title }}</span></div>
+    </div>
+  </div>
+
+  <h2 class="section-title">Événements & reportages</h2>
+  <div class="gallery-grid">
+    <div class="photo-card" *ngFor="let p of evenements" (click)="openImage(p.url)">
+      <img [src]="p.url" [alt]="p.title">
+      <div class="overlay"><span>{{ p.title }}</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- VUE FILTRÉE CLASSIQUE     -->
+<!-- ========================= -->
+
+<div class="gallery-grid" *ngIf="selectedCategory !== 'all'">
   @for (project of filteredProjects; track project.title) {
     <div class="photo-card" (click)="openImage(project.url)">
       <img [src]="project.url" [alt]="project.title" loading="lazy">
@@ -25,13 +114,21 @@
   }
 </div>
 
-<!-- LIGHTBOX -->
+
+<!-- ========================= -->
+<!-- LIGHTBOX                  -->
+<!-- ========================= -->
+
 <div class="lightbox" *ngIf="selectedImage" (click)="closeImage()">
   <img [src]="selectedImage">
 </div>
+
+
+<!-- ========================= -->
+<!-- CTA FIN DE PAGE           -->
+<!-- ========================= -->
 
 <section class="next-section">
   <h3>Et si je vous parlais de moi ?</h3>
   <a routerLink="/about" class="next-btn">Découvrir l’histoire</a>
 </section>
-
